@@ -18,11 +18,11 @@
 
 ## Lab overview
 
-In this lab Ansible 2.9.2 was installed in to a virtual python environment running python 2.7.9 although the modules have also been tested with python 3.x. To create the virtual environment and install Ansible and any required modules the following commands were used. The commands were issued from the directory in which the lab was to be executed. In this case it was in a directory called “Ansible_Sand_Pit”:
+In this lab Ansible 2.9.2 was installed in to a virtual python environment running python 2.7.9 although the modules have also been tested with python 3.x. To create the virtual environment and install Ansible and any required modules the following commands were used. The commands were issued from the directory in which the lab was to be executed. In this case it was in a directory called “Ansible_Sync_CVP”:
 
 ```shell
 > pwd
-~/Ansible_Sand_Pit
+~/Ansible_Sync_CVP
 > virtualenv --no-site-packages -p $(which python2.7) .venv
 > source .venv/bin/activate
 > pip install --user ansible
@@ -52,7 +52,7 @@ Having configured Ansible to enable access to the CVP servers two roles are requ
 
 ```shell
 > pwd
-~/Ansible_Sand_Pit 
+~/Ansible_Sync_CVP 
 
 > mkdir ./roles
 > ansible-galaxy init ./roles/cvp.sync
@@ -66,7 +66,7 @@ A set of directories and data stores are required to store the variables created
 
 ```shell
 > pwd
-~/Ansible_Sand_Pit 
+~/Ansible_Sync_CVP 
 
 > mkdir ./generated_vars
 > mkdir ./generated_vars/common_configlets
