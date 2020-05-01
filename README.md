@@ -27,7 +27,7 @@ In this lab Ansible 2.9.2 was installed in to a virtual python environment runni
 > source .venv/bin/activate
 > pip install --user ansible
 > pip install netaddr requests treelib
-> ansible-galaxy collection install arista-cvp-1.0.0.tar.gz -p collections
+> ansible-galaxy collection install arista.cvp
 ```
 In addition to the above packages SSHPASS will also be required, this can be installed using one of the following methods depending on the Operating System of the Ansible host:
 
