@@ -107,7 +107,25 @@ __cvp.sync.yml__ conists of two plays:
 
 When the playbook is executed using the “check” flag it will gather the shared Configlet information and update the master.yml file.
 
+```shell
+> pwd
+~/Ansible_Sync_CVP 
+> ansible-playbook ./cvp.sync.yml --tags check
+PLAY [Check Shared Configlets across CVP clusters]
+...
+```
+
 When the playbook is executed using the “sync” flag it will gather the shared Configlet information and update the master.yml file then synchronize the Configlets across the CVP instances.
+
+```shell
+> pwd
+~/Ansible_Sync_CVP 
+> ansible-playbook ./cvp.sync.yml --tags sync
+PLAY [Check Shared Configlets across CVP clusters]
+...
+PLAY [Update Shared Configlets across CVP clusters]
+...
+```
 
 The Configlets can then be changed on either CVP instance or by manipulating the master.yml file and the playbook executed again using the “sync” flag. With each execution the master.yml file is updated and the latest version of the shared Configlets is pushed to each of the CVP instances.
 
