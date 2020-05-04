@@ -5,7 +5,7 @@
    devices: []
    containers: ['CTL1_TempTest']
 'shared_Test':
-   config: "! Test Configlet"
-   last_changed: 1578664948405
+   config: "! Test Configlet\n! Will this sync\n! CVP-1 to CVP-2"
+   last_changed: 1588597879728
    devices: []
    containers: ['CTL1_TempTest']
