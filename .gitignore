@@ -4,10 +4,7 @@ collections/*
 
 # Test Run Files
 /generated_vars/common_configlets/*.yml
-!*.MD
-
 /generated_vars/cvp_servers/*.yml
-!*.MD
 
 # General
 .DS_Store
