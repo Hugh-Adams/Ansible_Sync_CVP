@@ -1,9 +1,0 @@
-[defaults]
-inventory=inventory.ini
-deprecation_warnings=False
-command_warnings=True
-retry_files_enabled=False
-host_key_checking=False
-collections_paths={{path to Ansible Collections}}/ansible-cvp/
-library={{path to Ansible Collections}}/ansible-cvp/
-callback_whitelist=profile_tasks

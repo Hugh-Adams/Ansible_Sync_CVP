@@ -1,8 +1,0 @@
----
-# handlers file for ztp_configuration
-
-- name: Restart DHCP service
-  service:
-    name: dhcpd
-    state: restarted
-  listen: "restart dhcpd"
