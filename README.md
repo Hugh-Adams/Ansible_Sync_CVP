@@ -18,16 +18,16 @@
 
 ## Lab overview
 
-In this lab Ansible 2.9.2 was installed in to a virtual python environment running python 2.7.9 although the modules have also been tested with python 3.x. To create the virtual environment and install Ansible and any required modules the following commands were used. The commands were issued from the directory in which the lab was to be executed. In this case it was in a directory called “Ansible_Sand_Pit”:
+In this lab Ansible 2.9.2 was installed in to a virtual python environment running python 2.7.9 although the modules have also been tested with python 3.x. To create the virtual environment and install Ansible and any required modules the following commands were used. The commands were issued from the directory in which the lab was to be executed. In this case it was in a directory called “Ansible_Sync_CVP”:
 
 ```shell
 > pwd
-~/Ansible_Sand_Pit
+~/Ansible_Sync_CVP
 > virtualenv --no-site-packages -p $(which python2.7) .venv
 > source .venv/bin/activate
 > pip install --user ansible
 > pip install netaddr requests treelib
-> ansible-galaxy collection install arista-cvp-1.0.0.tar.gz -p collections
+> ansible-galaxy collection install arista.cvp
 ```
 In addition to the above packages SSHPASS will also be required, this can be installed using one of the following methods depending on the Operating System of the Ansible host:
 
@@ -52,7 +52,7 @@ Having configured Ansible to enable access to the CVP servers two roles are requ
 
 ```shell
 > pwd
-~/Ansible_Sand_Pit 
+~/Ansible_Sync_CVP 
 
 > mkdir ./roles
 > ansible-galaxy init ./roles/cvp.sync
@@ -66,7 +66,7 @@ A set of directories and data stores are required to store the variables created
 
 ```shell
 > pwd
-~/Ansible_Sand_Pit 
+~/Ansible_Sync_CVP 
 
 > mkdir ./generated_vars
 > mkdir ./generated_vars/common_configlets
@@ -107,7 +107,25 @@ __cvp.sync.yml__ conists of two plays:
 
 When the playbook is executed using the “check” flag it will gather the shared Configlet information and update the master.yml file.
 
+```shell
+> pwd
+~/Ansible_Sync_CVP 
+> ansible-playbook ./cvp.sync.yml --tags check
+PLAY [Check Shared Configlets across CVP clusters]
+...
+```
+
 When the playbook is executed using the “sync” flag it will gather the shared Configlet information and update the master.yml file then synchronize the Configlets across the CVP instances.
+
+```shell
+> pwd
+~/Ansible_Sync_CVP 
+> ansible-playbook ./cvp.sync.yml --tags sync
+PLAY [Check Shared Configlets across CVP clusters]
+...
+PLAY [Update Shared Configlets across CVP clusters]
+...
+```
 
 The Configlets can then be changed on either CVP instance or by manipulating the master.yml file and the playbook executed again using the “sync” flag. With each execution the master.yml file is updated and the latest version of the shared Configlets is pushed to each of the CVP instances.
 
