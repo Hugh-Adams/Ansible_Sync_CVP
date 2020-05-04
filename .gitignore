@@ -3,8 +3,11 @@
 collections/*
 
 # Test Run Files
-./generated_vars/common_configlets/*.yml
-./generated_vars/cvp_servers/*.yml
+/generated_vars/common_configlets/
+!*.MD
+
+/generated_vars/cvp_servers/*.yml
+!*.MD
 
 # General
 .DS_Store
